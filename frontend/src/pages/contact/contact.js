@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
       Si necesitas probar el SweetAlert de error, comenta el bloque de éxito de arriba
       y descomenta este bloque.
 
-      showContactError("Este es un mensaje de error de prueba.");
+      showContactError("Algo salió mal, intenta de nuevo por favor");
     */
   });
 });
