@@ -190,6 +190,23 @@ main {
   transition: 0.1s ease;
 }
 
+.contact-page {
+  width: 100%;
+  min-height: 70vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 3rem;
+  padding: 4rem 6rem;
+  background-color: var(--fondo-principal-crema);
+}
+
+.contact-form-section {
+  padding: 0;
+  justify-content: flex-end;
+}
+
+
 /* Sección aside: Tonantzin/
 
 
@@ -197,7 +214,185 @@ main {
 
 
 
-/* Sección formulario: Mafer/
+/* ==========================================================================
+   ? SECCIÓN: FORMULARIO DE CONTACTO - MAFER
+   Esta sección contiene únicamente los estilos del formulario.
+   ========================================================================== */
+
+/* Card que contiene el formulario */
+.contact-form-card {
+  /* Limita el ancho máximo de la card para que no se estire demasiado */
+  width: min(100%, 620px);
+
+  /* Color de fondo cálido de acuerdo con la paleta del proyecto */
+  background-color: var(--beige-calido-degradado);
+
+  /* Borde sutil para separar visualmente la card del fondo */
+  border: 1px solid rgba(82, 31, 18, 0.12);
+
+  /* Bordes redondeados para una apariencia más suave */
+  border-radius: 14px;
+
+  /* Espaciado interno de la card */
+  padding: 28px 24px 24px;
+
+  /* Sombra ligera para dar profundidad */
+  box-shadow: 0 8px 18px rgba(82, 31, 18, 0.08);
+}
+
+/* Título del formulario */
+.contact-form-card h1 {
+  /* Color principal de texto de la marca */
+  color: var(--texto-principal-cafe-oscuro);
+
+  /* Tipografía editorial usada en el proyecto */
+  font-family: "Cormorant Garamond", serif;
+
+  /* Tamaño del título */
+  font-size: 2.2rem;
+
+  /* Grosor del texto */
+  font-weight: 700;
+
+  /* Centra el título */
+  text-align: center;
+
+  /* Separación inferior entre el título y los campos */
+  margin-bottom: 24px;
+}
+
+/* Formulario */
+.contact-form {
+  /* Acomoda los campos de forma vertical */
+  display: flex;
+  flex-direction: column;
+
+  /* Espacio entre cada campo */
+  gap: 18px;
+}
+
+/* Grupo de cada campo: label + input/textarea */
+.form-group {
+  width: 100%;
+}
+
+/* Label visible encima de cada campo */
+.form-group label {
+  display: block;
+  position: static;
+  color: var(--texto-principal-cafe-oscuro);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+/* Estilos generales para inputs y textarea */
+.form-group input,
+.form-group textarea {
+  /* Ocupan todo el ancho disponible */
+  width: 100%;
+
+  /* Borde tenue con tono café */
+  border: 1px solid rgba(82, 31, 18, 0.18);
+
+  /* Fondo crema para mantener coherencia visual */
+  background-color: var(--fondo-principal-crema);
+
+  /* Color del texto escrito por el usuario */
+  color: var(--texto-principal-cafe-oscuro);
+
+  /* Tipografía del proyecto */
+  font-family: "Cormorant Garamond", serif;
+
+  /* Tamaño del texto dentro de los campos */
+  font-size: 1.15rem;
+
+  /* Espaciado interno */
+  padding: 14px 16px;
+
+  /* Quita el borde azul por defecto del navegador */
+  outline: none;
+
+  /* Transición suave para el enfoque */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Altura de los campos de texto cortos */
+.form-group input {
+  min-height: 58px;
+}
+
+/* Altura del área de mensaje */
+.form-group textarea {
+  min-height: 220px;
+
+  /* Permite que el usuario cambie la altura solo verticalmente */
+  resize: vertical;
+}
+
+/* Color de los placeholders */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(82, 31, 18, 0.35);
+}
+
+/* Estado cuando el usuario selecciona un campo */
+.form-group input:focus,
+.form-group textarea:focus {
+  /* Borde más fuerte al estar activo */
+  border-color: var(--texto-principal-cafe-oscuro);
+
+  /* Sombra ligera para indicar foco */
+  box-shadow: 0 0 0 3px rgba(82, 31, 18, 0.08);
+}
+
+/* Contenedor del botón */
+.form-button-container {
+  /* Alinea el botón a la derecha en desktop */
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Botón de envío */
+.contact-button {
+  /* Color principal del botón */
+  background-color: var(--boton-principal-acento-fuerte);
+
+  /* Color del texto del botón */
+  color: var(--fondo-principal-crema);
+
+  /* Quita borde por defecto */
+  border: none;
+
+  /* Bordes ligeramente redondeados */
+  border-radius: 6px;
+
+  /* Tamaño interno del botón */
+  padding: 10px 38px;
+
+  /* Tipografía del proyecto */
+  font-family: "Cormorant Garamond", serif;
+
+  /* Tamaño y peso del texto */
+  font-size: 1.15rem;
+  font-weight: 700;
+
+  /* Cambia el cursor para indicar interacción */
+  cursor: pointer;
+
+  /* Animación suave al pasar el cursor */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover del botón */
+.contact-button:hover {
+  /* Usa un café más oscuro de la paleta */
+  background-color: var(--texto-principal-cafe-oscuro);
+
+  /* Eleva ligeramente el botón */
+  transform: translateY(-2px);
+}
 
 
 
@@ -566,6 +761,21 @@ main {
 
 
 
+  .contact-page {
+    grid-template-columns: 1fr;
+    padding: 2rem 1rem;
+    gap: 2rem;
+  }
+
+  .contact-form-section {
+    justify-content: center;
+  }
+
+  .contact-form-title {
+    font-size: 1.9rem;
+  }
+  
+  
   .footer-container {
     grid-template-columns: 1fr; /* Cambia a una sola columna vertical */
     text-align: center;
