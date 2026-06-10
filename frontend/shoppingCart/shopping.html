@@ -75,18 +75,21 @@
             </li>
 
             <li class="nav-item">
-            <a
-                class="nav-link active"
-                href="shopping.html"
-            >
-                <img
-                src="/src/assets/icons/icono-carrito-navbar.png"
-                alt="Carrito"
-                class="navbar-icon"
-                loading="lazy"
-                />
-            </a>
-            </li>
+    <button
+        class="nav-link btn btn-link border-0 p-0"
+        type="button"
+        data-bs-toggle="offcanvas" 
+        data-bs-target="#offcanvasCarrito" 
+        aria-controls="offcanvasCarrito"
+    >
+        <img
+            src="/src/assets/icons/icono-carrito-navbar.png"
+            alt="Carrito"
+            class="navbar-icon"
+            loading="lazy"
+        />
+    </button>
+</li>
                         </ul>
 
                         <form class="search-form d-flex" role="search">
@@ -107,7 +110,27 @@
         <main>
             <!--? Carrito-->
             <section>
-                <!--Escribe tu código aquí-->
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCarrito" aria-labelledby="offcanvasCarritoLabel">
+    <div class="offcanvas-header border-bottom">
+        <h5 class="offcanvas-title fw-bold" id="offcanvasCarritoLabel">Tu Carrito de Compras</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    
+    <div class="offcanvas-body">
+        <div class="carrito-productos mb-4">
+            <p class="text-muted text-center">Tu carrito está vacío temporalmente.</p>
+            </div>
+
+        <div class="border-top pt-3">
+            <div class="d-flex justify-content-between mb-2">
+                <span>Subtotal:</span>
+                <strong id="carritoSubtotal">$0.00</strong>
+            </div>
+            <a href="/src/pages/shoppingCart/shopping.html" class="btn btn-primary w-100 mb-2">Ver pantalla completa</a>
+            <button class="btn btn-success w-100" type="button">Terminar compra</button>
+        </div>
+    </div>
+</div>
             </section>
             <!--? Resumen del pedido -->
             <section>
