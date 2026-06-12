@@ -90,7 +90,9 @@ main {
   position: relative;
   color: var(--texto-principal-cafe-oscuro) !important;
   padding: 0.5rem 1rem;
-  transition: transform 0.3s ease, color 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
 }
 
 .nav-link:hover,
@@ -231,10 +233,6 @@ main {
   transition: 0.1s ease;
 }
 
-
-
-
-
 /* ==========================================================================
    SECCIÓN: ESTILOS DEL FOOTER
    ========================================================================== */
@@ -309,7 +307,7 @@ main {
   color: #4a3319;
   font-size: 1.3rem;
   font-weight: 900;
- margin-bottom: 10px;
+  margin-bottom: 10px;
   margin-left: 30px;
 }
 
@@ -361,37 +359,37 @@ main {
    ========================================================================== */
 
 .pixel-section {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: center;
-    gap: 4px;
-    padding-right: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4px;
+  padding-right: 0;
 }
 
 .pixel-interaction-title {
-    width: 100%;
-    text-align: center;
-    color: var(--texto-principal-cafe-oscuro);
-    font-family: "Cormorant Garamond", serif;
-    font-size: 1.45rem;
-    font-weight: 700;
-    margin: 0 0 2px 0;
-    letter-spacing: 0.5px;
+  width: 100%;
+  text-align: center;
+  color: var(--texto-principal-cafe-oscuro);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+  margin: 0 0 2px 0;
+  letter-spacing: 0.5px;
 }
 
 .pixel-interaction-title::after {
-    content: "";
-    display: block;
-    width: 95px;
-    height: 2px;
-    background-color: var(--cafe-medio);
-    margin: 4px auto 0;
-    border-radius: 999px;
+  content: "";
+  display: block;
+  width: 95px;
+  height: 2px;
+  background-color: var(--cafe-medio);
+  margin: 4px auto 0;
+  border-radius: 999px;
 }
 
-   .pixel-section {
+.pixel-section {
   width: 100%;
   display: flex;
   align-items: center;
@@ -524,12 +522,6 @@ main {
   --speed: 1.08s;
 }
 
-
-
-
-
-
-
 /* ==========================================================================
    AJUSTES RESPONSIVOS (Pantallas Móviles)
    ========================================================================== */
@@ -548,7 +540,6 @@ main {
     font-size: 1.4rem;
   }
 }
-
 
 @media (max-width: 991px) {
   .navbar {
@@ -598,8 +589,6 @@ main {
     height: 36px;
   }
 
-
-
   .footer-container {
     grid-template-columns: 1fr; /* Cambia a una sola columna vertical */
     text-align: center;
@@ -615,19 +604,19 @@ main {
 
   /*Responsive de los 8bit*/
   .pixel-section {
-        align-items: center;
-        gap: 8px;
-    }
+    align-items: center;
+    gap: 8px;
+  }
 
-    .pixel-interaction-title {
-        font-size: 1.25rem;
-        margin-bottom: 4px;
-    }
+  .pixel-interaction-title {
+    font-size: 1.25rem;
+    margin-bottom: 4px;
+  }
 
-    .pixel-interaction-title::after {
-        width: 75px;
-    }
-  
+  .pixel-interaction-title::after {
+    width: 75px;
+  }
+
   .pixel-section {
     align-items: center;
     text-align: center;
@@ -658,7 +647,6 @@ main {
     transform: scale(0.8) translateY(-4px);
   }
 }
-
 
 @media (max-width: 576px) {
   .navbar .container {
