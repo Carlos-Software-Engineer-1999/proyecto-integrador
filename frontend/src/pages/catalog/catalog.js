@@ -237,6 +237,8 @@ function abrirModalLibro(libro) {
 function abrirModalSagas(saga) {
     document.getElementById("tituloModals").textContent = saga.nombre;
     document.getElementById("nombreSagaModal").textContent = saga.nombre;
+    document.getElementById("autorModals").textContent = saga.autor;
+    document.getElementById("editorialModals").textContent = saga.editorial;
     document.getElementById("imagenModals").src = saga.portada || "";
     document.getElementById("isbnModals").textContent = saga.isbnSaga;
     document.getElementById("precioModals").textContent = saga.precioSaga;   // sin $ extra
