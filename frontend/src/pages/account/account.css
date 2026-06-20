@@ -250,7 +250,7 @@ h1{
   width: 50vw;
   min-width: 320px;
   max-width: 600px;
-  background-color: var(--beige-calido-degradado);
+  background-color: var(--crema-secundario);
   padding: 30px;
   margin: auto;
   margin-top: 60px;
@@ -272,7 +272,7 @@ h1{
 
 .regis-form-data{
   width: 100%;
-  background-color: var(--beige-grisaceo);
+  background-color: white;
   padding: 10px;
   border-radius: 4px;
   margin-bottom: 16px;

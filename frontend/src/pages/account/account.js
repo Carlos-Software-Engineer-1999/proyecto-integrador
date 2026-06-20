@@ -155,3 +155,71 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   renderUserPoints();
 });
+👁
+
+
+/*==========================================================================*/
+              //*!Formulario de registro*/
+/*==========================================================================*/
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("formregister");
+    const warnings = document.getElementById("warnings");
+
+    form.addEventListener("submit", (e) => {
+        // Evitamos que el formulario se envíe automáticamente y recargue la página
+        e.preventDefault(); 
+        
+        // Capturamos los valores actuales de los inputs eliminando espacios vacíos al inicio/final
+        const nombre = document.getElementById("regisNombres").value.trim();
+        const apellidos = document.getElementById("regisApellidos").value.trim();
+        const phone = document.getElementById("regisphone").value.trim();
+        const email = document.getElementById("regisEmail").value.trim();
+        const emailconf = document.getElementById("regisEmailconf").value.trim();
+        const password = document.getElementById("regisPassword").value.trim();
+        const passwordconf = document.getElementById("regisPasswordconf").value.trim();
+
+        let errores = [];
+        warnings.innerHTML = ""; // Limpiamos la pantalla de errores previos
+
+        // 1. Validar campos vacíos
+        if (!nombre || !apellidos || !phone || !email || !emailconf || !password || !passwordconf) {
+            errores.push("Todos los campos son obligatorios.");
+        }
+
+        // 2. Validar formato de Email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (email && !emailRegex.test(email)) {
+            errores.push("Ingresa un correo válido.");
+        }
+
+        // 3. Validar coincidencia de correos
+        if (email !== emailconf) {
+            errores.push("Los correos no coinciden.");
+        }
+
+        // 4. Validar longitud de la contraseña
+        if (password && password.length < 8) {
+            errores.push("La contraseña debe tener al menos 8 caracteres.");
+        }
+
+        // 5. Validar coincidencia de contraseñas
+        if (password !== passwordconf) {
+            errores.push("Las contraseñas no coinciden.");
+        }
+
+        // 6. Evaluar resultados
+        if (errores.length > 0) {
+            // Mostramos todos los errores acumulados separados por un salto de línea
+            warnings.innerHTML = errores.join("<br>");
+            warnings.style.color = "red"; 
+        } else {
+            // Si pasa todas las validaciones
+            warnings.innerHTML = "¡Registro exitoso! Procesando datos...";
+            warnings.style.color = "green";
+
+            // Aquí puedes proceder a enviar los datos a tu backend con fetch() 
+            // o permitir el comportamiento por defecto descomentando la línea de abajo:
+            // form.submit();
+        }
+    });
+});
