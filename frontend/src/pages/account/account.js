@@ -210,6 +210,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // 6. Evaluar resultados
         if (errores.length > 0) {
+          // Unir errores con salto de linea de HTML para el cuerpo de la alerta
+          const mensajeErrores = errores.join("<br>");
+
+          Swal.fire({
+                title: 'Error de registro',
+                html: mensajeErrores, // Usamos 'html' en lugar de 'text' para que interprete los <br>
+                icon: 'error',
+                confirmButtonText: 'Entendido',
+                background: "#F6EBD9",
+                confirmButtonColor: '#4b1d13' // Opcional: un color rojo para el botón de error
+            });
             // Mostramos todos los errores acumulados separados por un salto de línea
             warnings.innerHTML = errores.join("<br>");
             warnings.style.color = "red"; 
@@ -218,12 +229,33 @@ document.addEventListener("DOMContentLoaded", () => {
             warnings.innerHTML = "¡Registro exitoso! Procesando datos...";
             warnings.style.color = "green";
 
-            // Aquí puedes proceder a enviar los datos a tu backend con fetch() 
-            // o permitir el comportamiento por defecto descomentando la línea de abajo:
-            // form.submit();
+            Swal.fire({
+                title: '¡Registro Exitoso!',
+                text: 'Tu cuenta ha sido creada correctamente.',
+                icon: 'success',
+                confirmButtonText: 'Continuar',
+                background: "#F6EBD9",         // Mismo fondo crema
+                confirmButtonColor: '#4b1d13'   // Mismo color café oscuro
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Si el usuario da clic en 'Continuar', el formulario se envía de verdad
+                    // form.submit(); 
+                
+                
+                
+                    // Aquí puedes proceder a enviar los datos a tu backend con fetch() 
+                    // o permitir el comportamiento por defecto descomentando la línea de abajo:
+                    // form.submit();
+                
+                  }
+            });
         }
     });
-  });
+});
+
+  //       }
+  //   });
+  // });
 
 /* ==========================================================================
    MI CUENTA - WISHLIST

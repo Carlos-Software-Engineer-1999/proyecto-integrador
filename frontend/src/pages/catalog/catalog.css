@@ -771,31 +771,31 @@ main {
   font-weight: 600;
 }
 .btn-carrito:hover {
-  background-color: #6b9e4a !important;
+  background-color: var(--boton-principal-acento-fuerte) !important;
   color: white !important;
 }
 
 /* Dentro del footer del modal de libro */
 .modal-footer .btn-carrito {
-  background-color: #85BB65 !important;
+  background-color: var(--boton-principal-acento-fuerte) !important;
   color: white !important;
 }
 .modal-footer .btn-carrito:hover {
-  background-color: #6b9e4a !important;
+  background-color: var(--boton-principal-acento-fuerte) !important;
 }
 
 /* Dentro del carrusel de libros del modal de saga */
 #modalSagas .btn-carrito {
-  background-color: #85BB65 !important;
+  background-color: var(--boton-principal-acento-fuerte) !important;
   color: white !important;
 }
 #modalSagas .btn-carrito:hover {
-  background-color: #6b9e4a !important;
+  background-color: var(--boton-principal-acento-fuerte) !important;
 }
 
 /* Botón "Agregar saga al carrito" (footer del modal de saga) */
 #modalSagas .btn-carrito-saga {
-  background-color: #85BB65 !important;
+  background-color: var(--boton-principal-acento-fuerte) !important;
   color: white !important;
   border: none;
   border-radius: 10px;
@@ -803,7 +803,7 @@ main {
   font-weight: 600;
 }
 #modalSagas .btn-carrito-saga:hover {
-  background-color: #6b9e4a !important;
+  background-color: var(--boton-principal-acento-fuerte) !important;
 }
 
 /* ================================= */
@@ -829,12 +829,12 @@ main {
   line-height: 1.2;
 }
 .modal-footer .btn-secondary {
-  background-color: #ff0f0f;
+  background-color: var(--boton-principal-acento-fuerte);
   color: white;
   border: none;
 }
 .modal-footer .btn-secondary:hover {
-  background-color: #cc0000;
+  background-color: var(--boton-principal-acento-fuerte);
 }
 
 /* ================================= */

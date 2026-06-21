@@ -231,8 +231,9 @@ main {
 }
 
 
-
-/*! Formulario de registro*/
+/*============================================================*/
+              /*! Formulario de registro*/
+/*============================================================*/
 
 h1{
   color: var(--boton-principal-acento-fuerte);
@@ -245,12 +246,20 @@ h1{
   padding-top: 10px;
 }
 
+
+.regislabel{
+  font-weight: 650;
+  font-size: large;
+  padding-bottom: 2px;
+  padding-top: 8px;
+}
+
 .form-register{
   /* width: 400px; */
   width: 50vw;
   min-width: 320px;
   max-width: 600px;
-  background-color: var(--crema-secundario);
+  background-color: var(--beige-calido-degradado);
   padding: 30px;
   margin: auto;
   margin-top: 60px;
@@ -260,14 +269,15 @@ h1{
   box-shadow: 7px 13px 37px rgba(160, 101, 61, 1.0);
   font-family: 'Comorant Garamond';
   color: var(--boton-principal-acento-fuerte);
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 100;
 }
 
 .form-register h4 {
-  font-size: 22px;
+  font-size: 25px;
   margin-bottom: 20px;
   font-weight: 700;
+  text-align: center;
 }
 
 .regis-form-data{
@@ -275,22 +285,40 @@ h1{
   background-color: white;
   padding: 10px;
   border-radius: 4px;
-  margin-bottom: 16px;
+  margin-bottom: auto;
   border: 1px solid var(--cafe-medio);
-  color: var(--boton-principal-acento-fuerte)
+  color: var(--boton-principal-acento-fuerte);
+  border: 1px solid var(--cafe-medio);
+  transition: border-color 0.3 ease, box-shadow 0.3s ease;
+}
+
+.regis-form-data:focus{
+  border-color: var(--boton-principal-acento-fuerte);
+  outline: none;
+  box-shadow: 0 0 5px rgba(75, 29, 19, 0.2);
 }
 
 .form-register p{
-  height: 40px;
+  height: auto;
   text-align: center;
   font-size: 18px;
   font-weight: 650;
   line-height: 20px;
+  margin-bottom: 15px;
+}
+
+.form-register a{
+  color: var(--boton-principal-acento-fuerte);
+  transition: color 0.3s ease;
+  font-weight: 700;
+  display: inline-block;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), color 0.3s ease;
 }
 
 .form-register a:hover{
-  color: var(--boton-principal-acento-fuerte);
+  color: var(--cafe-medio);
   text-decoration: underline var(--cafe-medio);
+  transform: scale(1.08);
 }
 
 .btn-register{
@@ -300,21 +328,26 @@ h1{
   padding: 12px;
   color: white;
   display: block;
-  margin: 16px auto;
-  font-size: 16px;
+  margin: 8px auto 16px;
+  font-size: 17px;
+  outline: none;
+  border: var(--cafe-medio);
+  border-radius: 8px;
+  transition: backgroun-color 0.3s ease, transform 0.2s ease;
 }
 
 .btn-register:hover{
-  background: var(--cafe-medio);
+  transform: scale(1.07); 
 }
 
 /*! Warnings*/
 .warnings{
   width: 200px;
   text-align: center;
-  margin: auto;
+  margin: 10px auto 4px;
   color: var(--beige-calido-degradado);
-  padding-top: 20px;
+  padding-top: 0;
+  display: block;
 }
 
 
