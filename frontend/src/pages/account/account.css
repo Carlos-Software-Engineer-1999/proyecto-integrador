@@ -1560,61 +1560,13 @@ font-weight: bold;
     }
 }
 
-/* Contenedor Principal en Flexbox */
+/* ==========================================
+   Contenedor Principal y Estructura
+   ========================================== */
 .account-container {
     display: flex;
     min-height: 100vh;
-    font-family: 'Georgia', serif; /* O la tipografía de tu web */
-}
 
-/* Sidebar (Menú Izquierdo) */
-.sidebar {
-    width: 280px;
-    background-color: #F7E3C3; /* Fondo crema de la imagen */
-    padding: 40px 20px;
-    box-sizing: border-box;
-}
-
-.sidebar h2 {
-    color: #5C2D1B; /* Color café oscuro */
-    font-size: 24px;
-    margin-bottom: 30px;
-    padding-left: 10px;
-}
-
-.sidebar-menu {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-/* Botones del Menú */
-.menu-btn {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    padding: 15px;
-    background-color: #FDF4E7; /* Fondo del botón interactivo */
-    border: 1px solid #E6D2B5;
-    color: #5C2D1B;
-    font-size: 16px;
-    text-align: left;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.menu-btn:hover, .menu-btn.active {
-    background-color: #F5EAD6;
-    font-weight: bold;
-}
-
-/* Icono provisional (puedes cambiarlo por SVGs o FontAwesome) */
-.menu-btn .icon {
-    margin-right: 15px;
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 /* Área de contenido de la derecha */
@@ -1622,6 +1574,8 @@ font-weight: bold;
     flex: 1;
     padding: 40px;
     background-color: #ffffff;
+    /* Margen izquierdo igual al width del sidebar para evitar que se encimen */
+    margin-left: 400px; 
 }
 
 /* Control de secciones mediante JS */
@@ -1633,26 +1587,168 @@ font-weight: bold;
     display: block; /* Solo se muestra la sección activa */
 }
 
-/* Sidebar Fijo */
+
+/* ==========================================
+   Sidebar (Menú Izquierdo Fijo)
+   ========================================== */
 .sidebar {
-    width: 280px;
-    background-color: #F7E3C3;
+    width: 400px;
+    background-color: #F7E3C3; /* Fondo crema */
     padding: 40px 20px;
     box-sizing: border-box;
     
-    /* AGREGA ESTO */
+    /* Posicionamiento fijo lateral */
     position: fixed;
-    top: 0;
     left: 0;
-    height: 100vh;
+    /* top: 75px evita que el Navbar tape el título 'Mi cuenta' */
+    top: 75px; 
+    height: calc(100vh - 75px); 
+    
+    /* Fuerza al sidebar a flotar por encima del contenido derecho */
+    z-index: 100; 
+    display: flex;
+    flex-direction: column;
 }
 
-/* Contenido Derecho (Necesita moverse a la derecha para no ser tapado) */
-.main-content {
-    flex: 1;
-    padding: 40px;
-    background-color: #ffffff;
+/* Título 'Mi cuenta' */
+.sidebar h2 {
+    color: #5C2D1B !important;
+    font-size: 40px !important; 
+    display: block !important;  
     
-    /* AGREGA ESTO (Debe ser igual o mayor al width de tu sidebar) */
-    margin-left: 280px; 
+    /* 1. BAJAR EL TÍTULO: Agrega un margen superior (ejemplo: 40px) */
+    margin-top: 40px; 
+    
+    /* 2. ALINEACIÓN HORIZONTAL: Elige una de las siguientes opciones */
+    text-align: center; /* Cambia a 'left' si prefieres alineado a la izquierda */
+    
+    /* Espacio que queda entre el título y el bloque de botones */
+    margin-bottom: 1px; 
+    padding-left: 10px;
+}
+
+
+/* ==========================================
+   Bloque de Menú y Botones
+   ========================================== */
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    /* Controla la separación entre cada botón */
+    gap: 40px; 
+    /* Controla qué tan abajo empieza el bloque completo respecto al título */
+    margin-top: 70px; 
+}
+
+/* Botones del Menú */
+.menu-btn {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    /* Padding aumentado para hacer los botones más grandes */
+    padding: 25px; 
+    background-color: #FDF4E7; /* Fondo del botón interactivo */
+    border: 0.5px solid #E6D2B5;
+    color: #5C2D1B;
+    /* Texto más grande acorde al tamaño del botón */
+    font-size: 22px; 
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.menu-btn:hover, .menu-btn.active {
+    background-color: #F5EAD6;
+    font-weight: bold;
+}
+
+/* Iconos de los botones */
+.menu-btn .icon {
+    margin-right: 15px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* ==========================================================================
+   MI CUENTA - ACTUALIZA TUS DATOS (ESTILOS COMPONENTIZADOS)
+   ========================================================================== */
+
+/* Título principal de la sección */
+#sec-actualizar h2 {
+    color: #4B1D13;
+    font-weight: normal;
+}
+
+/* Contenedor principal con el color crema de la imagen */
+.profile-card-container {
+    background-color: #F6EBD9;
+    border-radius: 12px;
+    max-width: 700px;
+    margin: 0 auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Sutil sombra para dar profundidad */
+}
+
+/* Estilos de las etiquetas de los inputs */
+.profile-card-container .form-label {
+    color: #4B1D13;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* Inputs del formulario (Diseño limpio y plano) */
+.profile-card-container .form-control {
+    border: 1px solid #e2d5c3;
+    border-radius: 4px;
+    padding: 10px 14px;
+    background-color: #ffffff;
+    color: #333333;
+    font-family: system-ui, -apple-system, sans-serif;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Focus en los inputs (Efecto visual al dar click) */
+.profile-card-container .form-control:focus {
+    border-color: #4B1D13;
+    box-shadow: 0 0 0 3px rgba(75, 29, 19, 0.15);
+    outline: none;
+}
+
+/* Estilo para los placeholders (Texto de fondo grisáceo fino) */
+.profile-card-container .form-control::placeholder {
+    color: #c4b7a6;
+    opacity: 1;
+}
+
+/* Botón de Guardar Centrado */
+.profile-card-container .btn-submit-profile {
+    background-color: #4B1D13;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    min-width: 280px;
+    padding: 10px 30px;
+    font-size: 1.2rem;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    cursor: pointer;
+}
+
+/* Hover del botón */
+.profile-card-container .btn-submit-profile:hover {
+    background-color: #38140c;
+    color: #ffffff;
+}
+
+/* Feedback cuando el botón está deshabilitado procesando el envío */
+.profile-card-container .btn-submit-profile:disabled {
+    background-color: #70544f;
+    cursor: not-allowed;
+}
+
+/* Mensajes de error debajo de los campos */
+.profile-card-container .text-danger {
+    font-size: 0.85rem;
+    margin-top: 4px;
 }

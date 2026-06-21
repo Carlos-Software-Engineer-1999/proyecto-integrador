@@ -695,3 +695,155 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+/* ==========================================================================
+   MI CUENTA - ACTUALIZAR DATOS DE PERFIL (VALIDACIÓN COMPLETA)
+   ========================================================================== */
+document.addEventListener("DOMContentLoaded", () => {
+  const updateForm = document.getElementById("profileUpdateForm");
+  if (!updateForm) return;
+
+  const USER_STORAGE_KEY = "mel_logged_user";
+
+  // Mapeo de elementos del DOM
+  const elements = {
+    nombres: document.getElementById("updateNombres"),
+    apellidos: document.getElementById("updateApellidos"),
+    phone: document.getElementById("updatePhone"),
+    email: document.getElementById("updateEmail"),
+    emailConfirm: document.getElementById("updateEmailConfirm"),
+    password: document.getElementById("updatePassword"),
+    passwordConfirm: document.getElementById("updatePasswordConfirm"),
+    btnSubmit: document.getElementById("btnUpdateProfile"),
+    successMsg: document.getElementById("updateSuccess")
+  };
+
+  // 1. Precargar la información desde LocalStorage al cargar la página
+  function precargarPerfil() {
+    const storedUser = localStorage.getItem(USER_STORAGE_KEY);
+    if (!storedUser) return;
+
+    try {
+      const user = JSON.parse(storedUser);
+      if (elements.nombres) elements.nombres.value = user.nombres || "";
+      if (elements.apellidos) elements.apellidos.value = user.apellidos || "";
+      if (elements.phone) elements.phone.value = user.telefono || user.phone || "";
+      if (elements.email) {
+        elements.email.value = user.email || "";
+        // Autocompletar la confirmación inicialmente para mejorar la experiencia de usuario
+        if (elements.emailConfirm) elements.emailConfirm.value = user.email || "";
+      }
+    } catch (e) {
+      console.error("Error al deserializar el usuario para edición de datos:", e);
+    }
+  }
+
+  // 2. Procesar el envío y realizar las validaciones
+  updateForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    // Limpiar mensajes de error previos
+    document.querySelectorAll('[id$="Error"]').forEach(el => el.textContent = "");
+
+    let tieneErrores = false;
+
+    // Validación: Nombre y Apellido obligatorios
+    if (!elements.nombres.value.trim()) {
+      document.getElementById("updateNombresError").textContent = "El nombre es obligatorio.";
+      tieneErrores = true;
+    }
+    if (!elements.apellidos.value.trim()) {
+      document.getElementById("updateApellidosError").textContent = "El apellido es obligatorio.";
+      tieneErrores = true;
+    }
+
+    // Validación cruzada: Correos electrónicos idénticos
+    if (elements.email.value.trim() !== elements.emailConfirm.value.trim()) {
+      document.getElementById("updateEmailConfirmError").textContent = "Los correos electrónicos no coinciden.";
+      tieneErrores = true;
+    }
+
+    // Validación cruzada: Contraseñas (solo si el usuario decidió escribir una nueva)
+    if (elements.password.value.length > 0) {
+      if (elements.password.value !== elements.passwordConfirm.value) {
+        document.getElementById("updatePasswordConfirmError").textContent = "Las contraseñas no coinciden.";
+        tieneErrores = true;
+      } else if (elements.password.value.length < 8) {
+        document.getElementById("updatePasswordError").textContent = "La contraseña debe tener al menos 8 caracteres.";
+        tieneErrores = true;
+      }
+    }
+
+    // Si hay errores, detenemos el proceso y notificamos al usuario
+    if (tieneErrores) {
+      if (typeof Swal !== "undefined") {
+        Swal.fire({
+          icon: "warning",
+          title: "Revisa los campos",
+          text: "Por favor, corrige las inconsistencias en el formulario antes de guardar.",
+          confirmButtonColor: "#4B1D13"
+        });
+      }
+      return;
+    }
+
+    // Actualización local segura en el LocalStorage
+    const storedUser = localStorage.getItem(USER_STORAGE_KEY);
+    if (!storedUser) return;
+
+    try {
+      let user = JSON.parse(storedUser);
+
+      // Modificar las propiedades del objeto usuario
+      user.nombres = elements.nombres.value.trim();
+      user.apellidos = elements.apellidos.value.trim();
+      user.telefono = elements.phone.value.trim();
+      user.phone = elements.phone.value.trim(); // Mantenemos ambas nomenclaturas por compatibilidad
+      user.email = elements.email.value.trim();
+      
+      // Si el usuario cambió su contraseña de forma válida, la actualizamos
+      if (elements.password.value.length >= 8) {
+        user.password = elements.password.value;
+      }
+
+      // Guardar el objeto actualizado de vuelta en LocalStorage
+      localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(user));
+
+      // Efecto visual de feedback en el botón (Simulación de guardado)
+      elements.btnSubmit.disabled = true;
+      elements.btnSubmit.textContent = "Guardando...";
+
+      setTimeout(() => {
+        elements.btnSubmit.disabled = false;
+        elements.btnSubmit.textContent = "Guardar";
+        
+        if (elements.successMsg) {
+          elements.successMsg.textContent = "¡Tus datos han sido actualizados con éxito!";
+          setTimeout(() => { elements.successMsg.textContent = ""; }, 4000);
+        }
+
+        if (typeof Swal !== "undefined") {
+          Swal.fire({
+            icon: "success",
+            title: "¡Guardado!",
+            text: "Información de perfil actualizada correctamente.",
+            confirmButtonColor: "#4B1D13",
+            background: "#F6EBD9",
+            color: "#521F12"
+          });
+        }
+        
+        // Limpiar los campos de contraseña por seguridad después de guardar
+        elements.password.value = "";
+        elements.passwordConfirm.value = "";
+        
+      }, 800); // 800 milisegundos de espera para dar sensación de procesamiento
+
+    } catch (err) {
+      console.error("Error al persistir los cambios del perfil:", err);
+    }
+  });
+
+  // Inicializar la carga de datos al arrancar el script
+  precargarPerfil();
+});
