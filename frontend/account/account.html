@@ -132,9 +132,76 @@
             <br>
             <p><a href="#">Ya tengo una Cuenta</a></p>
         </form>
-            <!--? Log in-->
-            <section>
-                <!--Escribe tu código aquí ESCRITORIO-->
+
+
+            <!--? Log in Israel-->
+            <section class="login-section">
+                    <div class="login-banner">
+                        <h2>¡Qué bueno que regresaste, te extrañamos!</h2></div>
+    <div class="login-container">
+        <div class="login-user-icon">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="120"
+                height="120"
+                fill="currentColor"
+                viewBox="0 0 16 16"
+            >
+                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                <path d="M8 9a5 5 0 0 0-5 5v1h10v-1a5 5 0 0 0-5-5z"/>
+            </svg>
+        </div>
+
+        <form id="loginForm" novalidate>
+            <div class="login-field">
+                <label for="email">
+                    Ingresa tu correo electrónico
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="mail@example.com"
+                    autocomplete="email"
+                    required
+                />
+
+                <small class="error-message" id="emailError"></small>
+            </div>
+
+            <div class="login-field"><label for="password">
+        Ingresa tu contraseña</label>
+
+    <div class="password-container-wrapper" style="position: relative; width: 100%;">
+        <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="************"
+            autocomplete="current-password"
+            required
+        />
+
+        <button type="button" 
+        id="togglePassword" class="toggle-password-icon" 
+        aria-label="Mostrar contraseña">👁</button>
+    </div>
+
+    <small id="capsLockWarning" class="caps-warning-message" 
+    style="display: none;">⚠ Bloqueo de Mayúsculas activado.</small>
+
+    <small class="error-message" id="passwordError"></small>
+    </div>
+
+    <p olvidaste-contra><a href="#">¿Olvidaste tu contraseña?</a></p>
+
+            <button type="submit" 
+            class="login-btn">Ingresar</button>
+            <p id="loginSuccess" class="success-message"></p>
+            <p><a href="#">¿No tienes una cuenta? ¡Regístrate!</a></p>
+        </form>
+    </div>
             </section>
             <!--? panel de navegacion-->
             <section>
@@ -146,7 +213,21 @@
             </section>
             <!--? Historial-->
             <section>
-                <!--Escribe tu código aquí ESCRITORIO-->
+                <!--? Historial-->
+            <section>
+                <button class="btn-historial">
+                    Historial de compra
+                </button>
+            </section>
+            <div id="contenido"></div>
+            <!-- MODAL DETALLE HISTORIAL -->
+            <div id="modal-historial" class="modal">
+                <div class="modal-content">
+                    <span class="close-modal">&times;</span>
+                    <h2>Detalle de compra</h2>
+                    <div id="modal-body"></div>
+                </div>
+            </div>
             </section>
             <!--? Puntos acumulados: Mafer -->
             <section class="account-points-section" aria-labelledby="accountPointsTitle">
