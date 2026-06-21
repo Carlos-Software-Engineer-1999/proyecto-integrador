@@ -382,27 +382,37 @@ function abrirModalLibro(libro) {
     botonCarrito.dataset.precio = String(libro.precio);
     botonCarrito.dataset.portada = libro.portada;
   }
+/*Wishlist */ 
+  const btnWishlist = document.getElementById("btnWishlist");
+
+if (btnWishlist) {
+  btnWishlist.dataset.id = String(libro.id);
+  btnWishlist.dataset.titulo = libro.titulo;
+  btnWishlist.dataset.precio = String(libro.precio);
+  btnWishlist.dataset.imagen = libro.portada;
+  btnWishlist.dataset.descripcion = libro.sinopsis || "";
+}
 
   const modal = new bootstrap.Modal(document.getElementById("modalLibro"));
   modal.show();
 }
+
 
 /* =====================================
    ABRIR MODAL SAGAS
    ===================================== */
 
 function abrirModalSagas(saga) {
+  // ✅ IDs correctos con "s" al final
   document.getElementById("tituloModals").textContent = saga.nombre;
   document.getElementById("nombreSagaModal").textContent = saga.nombre;
   document.getElementById("imagenModals").src = saga.portada || "";
   document.getElementById("imagenModals").alt = saga.nombre;
   document.getElementById("isbnModals").textContent = saga.isbnSaga;
   document.getElementById("precioModals").textContent = formatearPrecio(saga.precioSaga);
-  document.getElementById("descripcionModals").textContent =
-    saga.descripcion || "Descripción disponible próximamente.";
+  document.getElementById("descripcionModals").textContent = saga.descripcion || "Descripción disponible próximamente.";
 
   const contenedor = document.getElementById("carruselSaga");
-
   if (!contenedor) return;
 
   contenedor.innerHTML = "";
@@ -433,8 +443,15 @@ function abrirModalSagas(saga) {
   btnDer.innerHTML = "&gt;";
   btnDer.setAttribute("aria-label", "Ver más libros de la saga");
 
-  btnIzq.addEventListener("click", () => moverCarrusel(carruselDiv, "izq"));
-  btnDer.addEventListener("click", () => moverCarrusel(carruselDiv, "der"));
+  // ✅ Eventos con console.log para depurar (opcional)
+  btnIzq.addEventListener("click", () => {
+    console.log("Flecha izquierda clickeada");
+    moverCarrusel(carruselDiv, "izq");
+  });
+  btnDer.addEventListener("click", () => {
+    console.log("Flecha derecha clickeada");
+    moverCarrusel(carruselDiv, "der");
+  });
 
   wrapper.appendChild(carruselDiv);
   wrapper.appendChild(btnIzq);
@@ -443,10 +460,22 @@ function abrirModalSagas(saga) {
   contenedor.appendChild(wrapper);
 
   const botonSagaCarrito = document.getElementById("btnAgregarSagaCarrito");
-
   if (botonSagaCarrito) {
     botonSagaCarrito.dataset.saga = saga.id;
   }
+
+  /*Wishlist*/
+
+const btnWishlistSaga = document.getElementById("btnWishlistSaga");
+
+if (btnWishlistSaga) {
+  btnWishlistSaga.dataset.id = String(saga.id);
+  btnWishlistSaga.dataset.titulo = saga.nombre;
+  btnWishlistSaga.dataset.precio = String(saga.precioSaga);
+  btnWishlistSaga.dataset.imagen = saga.portada;
+  btnWishlistSaga.dataset.descripcion = saga.descripcion || "Saga completa";
+  btnWishlistSaga.dataset.tipo = "saga";
+}
 
   const modalElement = document.getElementById("modalSagas");
   const modal = new bootstrap.Modal(modalElement);
@@ -577,3 +606,66 @@ window.addEventListener("resize", () => {
 document.addEventListener("DOMContentLoaded", () => {
   cargarCatalogo();
 });
+
+/* =====================================
+   AGREGAR A WISHLIST
+   ===================================== */
+/*Libros */ 
+
+document.addEventListener("DOMContentLoaded", () => {
+  const btnWishlist = document.getElementById("btnWishlist");
+
+  if (!btnWishlist) return;
+
+  btnWishlist.addEventListener("click", () => {
+    const libroWishlist = {
+      id: btnWishlist.dataset.id,
+      titulo: btnWishlist.dataset.titulo,
+      precio: Number(btnWishlist.dataset.precio),
+      imagen: btnWishlist.dataset.imagen,
+      descripcion: btnWishlist.dataset.descripcion
+    };
+
+    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+    const existe = wishlist.some((libro) => libro.id === libroWishlist.id);
+
+    if (!existe) {
+      wishlist.push(libroWishlist);
+      localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    }
+
+    btnWishlist.classList.add("activo");
+    btnWishlist.setAttribute("title", "Guardado en wishlist");
+  });
+});
+
+/* Sagas*/ 
+
+const btnWishlistSaga = document.getElementById("btnWishlistSaga");
+
+if (btnWishlistSaga) {
+  btnWishlistSaga.addEventListener("click", () => {
+    const itemWishlist = {
+      id: btnWishlistSaga.dataset.id,
+      titulo: btnWishlistSaga.dataset.titulo,
+      precio: Number(btnWishlistSaga.dataset.precio),
+      imagen: btnWishlistSaga.dataset.imagen,
+      descripcion: btnWishlistSaga.dataset.descripcion,
+      tipo: btnWishlistSaga.dataset.tipo
+    };
+
+    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+    const existe = wishlist.some(
+      item => String(item.id) === String(itemWishlist.id)
+    );
+
+    if (!existe) {
+      wishlist.push(itemWishlist);
+      localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    }
+
+    btnWishlistSaga.classList.add("activo");
+  });
+}
