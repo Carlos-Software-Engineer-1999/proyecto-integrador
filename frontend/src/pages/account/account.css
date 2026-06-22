@@ -1595,97 +1595,303 @@ font-weight: bold;
     }
 }
 
-/* ==========================================================================
-   CONTENEDOR PRINCIPAL DE "MI CUENTA"
-   ========================================================================== */
+/* ==========================================
+   Contenedor Principal y Estructura
+   ========================================== */
 .account-container {
     display: flex;
-    gap: 30px;
-    align-items: flex-start;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+    min-height: 100vh;
 }
 
-/* ==========================================================================
-   SIDEBAR IZQUIERDO (Estático/Fijo al hacer scroll)
-   ========================================================================== */
+/* Área de contenido de la derecha (Donde viven el historial, puntos y wishlist) */
+.main-content {
+    flex: 1;
+    padding: 40px;
+    background-color: #ffffff;
+    /* Margen izquierdo igual al width del sidebar para evitar que se encimen */
+    margin-left: 400px; 
+}
+
+/* Control de secciones mediante JS */
+.content-section {
+    display: none; /* Ocultas por defecto */
+}
+
+.content-section.active {
+    display: block; /* Solo se muestra la sección activa */
+}
+
+/* ==========================================
+   Sidebar (Menú Izquierdo Fijo)
+   ========================================== */
 .sidebar {
-    width: 300px;
-    background-color: #f7e6cc; /* Fondo beige cálido como la imagen */
-    padding: 40px 25px;
-    border-radius: 4px; /* Bordes sutiles */
-    min-height: 80vh;
+    width: 400px;
+    background-color: #F7E3C3; /* Fondo crema de tu imagen */
+    padding: 40px 20px;
+    box-sizing: border-box;
     
-    /* Propiedades clave para que el menú se quede fijo y no se deslice */
-    position: sticky;
-    top: 90px; /* Ajusta este valor dependiendo de la altura de tu Navbar fija */
-    align-self: flex-start;
+    /* Posicionamiento fijo lateral para que no se deslice */
+    position: fixed;
+    left: 0;
+    top: 75px; /* Evita que el Navbar tape el título */
+    height: calc(100vh - 75px); 
+    
+    /* Fuerza al sidebar a flotar por encima del contenido derecho */
+    z-index: 100; 
+    display: flex;
+    flex-direction: column;
 }
 
-/* Título "Mi cuenta" de la imagen */
+/* Título 'Mi cuenta' */
 .sidebar h2 {
-    color: #4a2e1b;
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 40px;
-    font-weight: normal;
+    color: #5C2D1B !important;
+    font-size: 40px !important; 
+    display: block !important;  
+    
+    /* Margen superior para bajar el título */
+    margin-top: 40px; 
+    text-align: center; 
+    
+    /* Espacio que queda entre el título y el bloque de botones */
+    margin-bottom: 1px; 
+    padding-left: 10px;
 }
 
-/* Contenedor de la lista de botones */
+/* ==========================================
+   Bloque de Menú y Botones
+   ========================================== */
 .sidebar-menu {
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Espaciado vertical notable entre los botones */
+    gap: 40px; /* Controla la separación entre cada botón */
+    margin-top: 70px; /* Controla qué tan abajo empieza el bloque respecto al título */
 }
 
-/* ==========================================================================
-   BOTONES DEL MENÚ (Estilo exacto a imagen_2.png)
-   ========================================================================== */
-.sidebar-menu .menu-btn {
+/* Botones del Menú */
+.menu-btn {
+    display: flex;
+    align-items: center;
     width: 100%;
-    background-color: #faf0e1; /* Fondo claro crema dentro del botón */
-    border: 1px solid #e2d1b8; /* Borde sutil */
-    color: #4a2e1b; /* Tono café para las letras */
-    padding: 20px 25px;
-    text-align: left; /* Alineado a la izquierda */
-    font-size: 1.5rem;
+    padding: 25px; /* Padding aumentado para hacer los botones más grandes */
+    background-color: #FDF4E7; /* Fondo claro del botón interactivo de la imagen */
+    border: 0.5px solid #E6D2B5;
+    color: #5C2D1B;
+    font-size: 22px; /* Texto grande acorde a la captura */
+    text-align: left;
     cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    border-radius: 2px;
+    transition: all 0.3s ease;
 }
 
-/* Efecto Hover (Al pasar el cursor) */
-.sidebar-menu .menu-btn:hover {
-    background-color: #f3e4cf;
-    border-color: #cdba9f;
-}
-
-/* Estado Activo (La pestaña seleccionada actualmente) */
-.sidebar-menu .menu-btn.active {
-    background-color: #ffffff; /* Se ilumina en blanco al estar activo */
-    border-color: #4a2e1b;     /* El contorno se vuelve más fuerte */
+/* Efecto al pasar el cursor o cuando la pestaña está activa */
+.menu-btn:hover, .menu-btn.active {
+    background-color: #F5EAD6;
     font-weight: bold;
-    box-shadow: 0 2px 8px rgba(74, 46, 27, 0.1);
 }
 
-/* Opcional: Si mantienes las etiquetas span de íconos vacías */
-.sidebar-menu .menu-btn .icon {
-    display: none; 
+/* Iconos de los botones (mantienen tu estructura original por si añades algo después) */
+.menu-btn .icon {
+    margin-right: 15px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* ==========================================================================
+   REGLAS RESPONSIVAS (Para pantallas menores a 992px) - TOTALMENTE CORREGIDO
+   ========================================================================== */
+@media (max-width: 992px) {
+    
+    .account-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .account-container .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto; 
+        left: auto;
+        top: auto; 
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .account-container .sidebar h2 {
+        font-size: 30px;
+        margin-top: 15px;
+        margin-bottom: 0px;
+        text-align: center;
+    }
+
+    .account-container .sidebar-menu {
+        display: flex; 
+        flex-direction: row; 
+        gap: 15px;
+        margin-top: 25px;
+        overflow-x: auto; 
+        padding-bottom: 10px;
+        width: 100%;
+        scrollbar-width: none; 
+    }
+    
+    .account-container .sidebar-menu::-webkit-scrollbar {
+        display: none;
+    }
+
+    .account-container .menu-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: auto; 
+        white-space: nowrap; 
+        padding: 15px 25px;
+        font-size: 18px;
+        box-sizing: border-box;
+    }
+
+    .account-container .menu-btn .icon {
+        margin-right: 10px;
+        font-size: 18px;
+    }
+
+    .account-container .main-content {
+        margin-left: 0; 
+        width: 100%;
+        padding: 30px 20px;
+        box-sizing: border-box;
+    }
+
+    /* Historial y Modales Responsivos */
+    #contenido .card-historial {
+        display: flex;
+        flex-direction: column; 
+        align-items: flex-start; 
+        gap: 12px;
+        padding: 15px;
+        min-height: auto;
+    }
+
+    #contenido .card-historial span {
+        text-align: left;
+        width: 100%;
+        flex: none;
+    }
+
+    .card-historial .btn-ver {
+        width: 100%;
+        text-align: center;
+        padding: 12px 0;
+        margin-top: 5px;
+    }
+
+    .modal-content {
+        width: 95%;
+        padding: 15px;
+        box-sizing: border-box;
+    }
+
+    .tabla-info {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
 }
 
 /* ==========================================================================
-   CONTENIDO DERECHO (El bloque que sí se deslizará)
+   Formulario: Actualiza tus Datos (Estilo Imagen Clonal)
    ========================================================================== */
-.main-content {
-    flex: 1; /* Toma todo el espacio restante a la derecha */
-    background-color: #fcfbfa; /* Fondo ligeramente contrastante para las secciones */
-    padding: 30px;
-    border-radius: 4px;
-    min-height: 100vh; /* Da suficiente espacio vertical para probar el scroll */
+.update-profile-container {
+    max-width: 650px;
+    margin: 0 auto;
 }
 
-/* Asegurar que las secciones ocultas no rompan el layout */
-.content-section {
+/* Título exterior */
+.update-title {
+    color: #5C2D1B;
+    font-size: 32px;
+    margin-bottom: 25px;
+    font-weight: normal;
+}
+
+/* Caja contenedora color crema de la imagen */
+#form-update-profile {
+    background-color: #F6EAD6; /* Fondo beige suave */
+    border-radius: 15px;      /* Bordes muy redondeados */
+    padding: 35px 40px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+}
+
+/* Bloques de campos */
+.update-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+/* Etiquetas del input */
+.update-field label {
+    color: #5C2D1B;
+    font-size: 18px;
+    margin-bottom: 8px;
+    text-align: left;
+}
+
+/* Cajas de texto blancas de la imagen */
+.update-field input {
     width: 100%;
+    padding: 12px 15px;
+    background-color: #FDFDFD;
+    border: 1px solid #E6D2B5;
+    font-size: 15px;
+    color: #333;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease;
+}
+
+.update-field input:focus {
+    outline: none;
+    border-color: #5C2D1B;
+    background-color: #FFFFFF;
+}
+
+/* Placeholders tenues estilo imagen */
+.update-field input::placeholder {
+    color: #E2D2BC;
+    opacity: 0.8;
+}
+
+/* Contenedor del botón para centrarlo abajo */
+.update-submit-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* Botón café oscuro elegante */
+.btn-save-profile {
+    background-color: #3B1A11; /* Café oscuro de la captura */
+    color: #FDF4E7;
+    border: none;
+    padding: 14px 80px;       /* Ancho cómodo */
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-save-profile:hover {
+    background-color: #5C2D1B;
+}
+
+/* Ajustes responsivos para celulares */
+@media (max-width: 768px) {
+    #form-update-profile {
+        padding: 20px 15px;
+    }
+    .btn-save-profile {
+        width: 100%;
+        padding: 14px 0;
+    }
 }

@@ -178,22 +178,63 @@
 
                     <main class="main-content">
                         <section id="sec-actualizar" class="content-section" style="display: none;">
-                            <h2>Actualiza tus datos</h2>
-                            <p>Modifica tu información de perfil y configuraciones de cuenta aquí.</p>
-                        </section>
+    <div class="update-profile-container">
+        <h2 class="update-title">Actualiza tus datos</h2>
+        
+        <form id="form-update-profile" novalidate>
+            <div class="update-field">
+                <label for="update-nombre">Ingresa tu nombre</label>
+                <input type="text" id="update-nombre" name="nombre" placeholder="Nombre">
+            </div>
 
-                        <section id="sec-historial" class="content-section">
-                            <button class="btn-historial">Historial de compra</button>
-                            <div id="contenido"></div>
-                            
-                            <div id="modal-historial" class="modal">
-                                <div class="modal-content">
-                                    <span class="close-modal">&times;</span>
-                                    <h2>Detalle de compra</h2>
-                                    <div id="modal-body"></div>
-                                </div>
-                            </div>
-                        </section>
+            <div class="update-field">
+                <label for="update-apellido">Ingresa tu apellido</label>
+                <input type="text" id="update-apellido" name="apellido" placeholder="Apellido">
+            </div>
+
+            <div class="update-field">
+                <label for="update-telefono">Ingresa tu Teléfono</label>
+                <input type="tel" id="update-telefono" name="telefono" placeholder="1234567890">
+            </div>
+
+            <div class="update-field">
+                <label for="update-email">Ingresa tu correo electrónico</label>
+                <input type="email" id="update-email" name="email" placeholder="mail@example.com">
+            </div>
+
+            <div class="update-field">
+                <label for="update-email-confirm">Confirma tu correo electrónico</label>
+                <input type="email" id="update-email-confirm" name="emailConfirm" placeholder="mail@example.com">
+            </div>
+
+            <div class="update-field">
+                <label for="update-password">Crea una contraseña</label>
+                <input type="password" id="update-password" name="password" placeholder="**********">
+            </div>
+
+            <div class="update-field">
+                <label for="update-password-confirm">Confirma tu contraseña</label>
+                <input type="password" id="update-password-confirm" name="passwordConfirm" placeholder="**********">
+            </div>
+
+            <div class="update-submit-container">
+                <button type="submit" class="btn-save-profile">Guardar</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+                    <section id="sec-historial" class="content-section">
+                        <div id="contenido"></div>
+    
+                        <div id="modal-historial" class="modal">
+                        <div class="modal-content">
+                    <span class="close-modal">&times;</span>
+                        <h2>Detalle de compra</h2>
+                        <div id="modal-body"></div>
+                    </div>
+            </div>  
+        </section>
 
                         <section id="sec-puntos" class="content-section account-points-section" aria-labelledby="accountPointsTitle" style="display: none;">
                             <div class="points-hero-card">
