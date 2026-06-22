@@ -1595,3 +1595,97 @@ font-weight: bold;
     }
 }
 
+/* ==========================================================================
+   CONTENEDOR PRINCIPAL DE "MI CUENTA"
+   ========================================================================== */
+.account-container {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* ==========================================================================
+   SIDEBAR IZQUIERDO (Estático/Fijo al hacer scroll)
+   ========================================================================== */
+.sidebar {
+    width: 300px;
+    background-color: #f7e6cc; /* Fondo beige cálido como la imagen */
+    padding: 40px 25px;
+    border-radius: 4px; /* Bordes sutiles */
+    min-height: 80vh;
+    
+    /* Propiedades clave para que el menú se quede fijo y no se deslice */
+    position: sticky;
+    top: 90px; /* Ajusta este valor dependiendo de la altura de tu Navbar fija */
+    align-self: flex-start;
+}
+
+/* Título "Mi cuenta" de la imagen */
+.sidebar h2 {
+    color: #4a2e1b;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: normal;
+}
+
+/* Contenedor de la lista de botones */
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espaciado vertical notable entre los botones */
+}
+
+/* ==========================================================================
+   BOTONES DEL MENÚ (Estilo exacto a imagen_2.png)
+   ========================================================================== */
+.sidebar-menu .menu-btn {
+    width: 100%;
+    background-color: #faf0e1; /* Fondo claro crema dentro del botón */
+    border: 1px solid #e2d1b8; /* Borde sutil */
+    color: #4a2e1b; /* Tono café para las letras */
+    padding: 20px 25px;
+    text-align: left; /* Alineado a la izquierda */
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    border-radius: 2px;
+}
+
+/* Efecto Hover (Al pasar el cursor) */
+.sidebar-menu .menu-btn:hover {
+    background-color: #f3e4cf;
+    border-color: #cdba9f;
+}
+
+/* Estado Activo (La pestaña seleccionada actualmente) */
+.sidebar-menu .menu-btn.active {
+    background-color: #ffffff; /* Se ilumina en blanco al estar activo */
+    border-color: #4a2e1b;     /* El contorno se vuelve más fuerte */
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(74, 46, 27, 0.1);
+}
+
+/* Opcional: Si mantienes las etiquetas span de íconos vacías */
+.sidebar-menu .menu-btn .icon {
+    display: none; 
+}
+
+/* ==========================================================================
+   CONTENIDO DERECHO (El bloque que sí se deslizará)
+   ========================================================================== */
+.main-content {
+    flex: 1; /* Toma todo el espacio restante a la derecha */
+    background-color: #fcfbfa; /* Fondo ligeramente contrastante para las secciones */
+    padding: 30px;
+    border-radius: 4px;
+    min-height: 100vh; /* Da suficiente espacio vertical para probar el scroll */
+}
+
+/* Asegurar que las secciones ocultas no rompan el layout */
+.content-section {
+    width: 100%;
+}
