@@ -1598,87 +1598,93 @@ font-weight: bold;
 /* ==========================================
    Contenedor Principal y Estructura
    ========================================== */
-.account-container {
-    display: flex;
-    min-height: 100vh;
-}
+  .account-container {
+   display: flex;
+    flex-direction: column;
+    /* Cambiamos a 'center' para que todo el contenido (navbar + main) 
+       se mantenga centrado en la pantalla si el ancho es menor a 1200px */
+    align-items: center; 
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
+  }
 
-/* Área de contenido de la derecha (Donde viven el historial, puntos y wishlist) */
-.main-content {
-    flex: 1;
-    padding: 40px;
-    background-color: #ffffff;
-    /* Margen izquierdo igual al width del sidebar para evitar que se encimen */
-    margin-left: 400px; 
-}
+  /* Área de contenido de la derecha (Donde viven el historial, puntos y wishlist) */
+  .main-content {
+    width: 100%;
+    max-width: 800px;
+    /* Esto centra el contenido del main-content si no ocupa los 800px completos */
+    margin: 0 auto; 
+    padding: 0 20px; /* Un poco de aire lateral para que no toque los bordes en móvil */
+    box-sizing: border-box;
+  }
 
-/* Control de secciones mediante JS */
-.content-section {
-    display: none; /* Ocultas por defecto */
-}
+  /* Control de secciones mediante JS */
+  .content-section {
+      display: none; /* Ocultas por defecto */
+  }
 
-.content-section.active {
-    display: block; /* Solo se muestra la sección activa */
-}
+  .content-section.active {
+      display: block; /* Solo se muestra la sección activa */
+  }
 
 /* ==========================================
    Sidebar (Menú Izquierdo Fijo)
    ========================================== */
 .sidebar {
-    width: 400px;
-    background-color: #F7E3C3; /* Fondo crema de tu imagen */
-    padding: 40px 20px;
-    box-sizing: border-box;
+   display: flex;
+    flex-direction: column; /* Apila el título arriba y los botones abajo */
+    align-items: center;    /* Centra todo horizontalmente */
+    justify-content: center;
     
-    /* Posicionamiento fijo lateral para que no se deslice */
-    position: fixed;
-    left: 0;
-    top: 75px; /* Evita que el Navbar tape el título */
-    height: calc(100vh - 75px); 
+    background-color: #F7E3C3;
+    padding: 20px;
+    width: 100%;
     
-    /* Fuerza al sidebar a flotar por encima del contenido derecho */
-    z-index: 100; 
-    display: flex;
-    flex-direction: column;
+    position: sticky;
+    top: 75px;
+    margin: 0;
+    border-radius: 0;
+    z-index: 10;
 }
 
 /* Título 'Mi cuenta' */
 .sidebar h2 {
-    color: #5C2D1B !important;
-    font-size: 40px !important; 
-    display: block !important;  
-    
-    /* Margen superior para bajar el título */
-    margin-top: 40px; 
-    text-align: center; 
-    
-    /* Espacio que queda entre el título y el bloque de botones */
-    margin-bottom: 1px; 
-    padding-left: 10px;
+    margin: 0 0 15px 0; /* Espacio debajo del título */
+    font-size: 24px;
+    text-align: center;
 }
+
+
 
 /* ==========================================
    Bloque de Menú y Botones
    ========================================== */
 .sidebar-menu {
-    display: flex;
-    flex-direction: column;
-    gap: 40px; /* Controla la separación entre cada botón */
-    margin-top: 70px; /* Controla qué tan abajo empieza el bloque respecto al título */
+   display: flex;
+    flex-direction: row; /* Fila horizontal */
+    justify-content: center; /* Centra los botones en la fila */
+    flex-wrap: wrap; /* Si la pantalla es pequeña, los botones bajan solos */
+    gap: 15px;
+    margin-top: 0;
+    width: 100%;
+    padding: 0;
+    background-color: transparent;
+    border: none;
 }
 
 /* Botones del Menú */
 .menu-btn {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    padding: 25px; /* Padding aumentado para hacer los botones más grandes */
-    background-color: #FDF4E7; /* Fondo claro del botón interactivo de la imagen */
+  width: auto;
+    padding: 10px 20px;
+    background-color: #FDF4E7;
     border: 0.5px solid #E6D2B5;
+    border-radius: 8px;
     color: #5C2D1B;
-    font-size: 22px; /* Texto grande acorde a la captura */
-    text-align: left;
+    font-size: 18px;
     cursor: pointer;
+    white-space: nowrap;
     transition: all 0.3s ease;
 }
 

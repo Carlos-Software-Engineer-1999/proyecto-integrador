@@ -319,21 +319,24 @@ document.addEventListener("click", (e) => {
 });
 
 function realizarCompra() {
-
+    // 1. Obtenemos el carrito desde el localStorage
     const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
+    // 2. Validación: si el carrito está vacío, no hacemos nada
     if (carrito.length === 0) {
         alert("El carrito está vacío");
         return;
     }
 
-    let historialCompras =
-        JSON.parse(localStorage.getItem("historialCompras")) || [];
+    // 3. Obtenemos el historial existente
+    let historialCompras = JSON.parse(localStorage.getItem("historialCompras")) || [];
 
+    // 4. Calculamos el total
     const total = carrito.reduce((acumulado, producto) => {
         return acumulado + (producto.precio * producto.cantidad);
     }, 0);
 
+    // 5. Creamos el objeto de la compra
     const compra = {
         idCompra: historialCompras.length + 1,
         fecha: new Date().toLocaleDateString(),
@@ -341,21 +344,15 @@ function realizarCompra() {
         productos: [...carrito]
     };
 
+    // 6. Guardamos en el historial y vaciamos el carrito en el localStorage
     historialCompras.push(compra);
+    localStorage.setItem("historialCompras", JSON.stringify(historialCompras));
+    localStorage.setItem("carrito", JSON.stringify([]));
 
-    localStorage.setItem(
-        "historialCompras",
-        JSON.stringify(historialCompras)
-    );
-
-    localStorage.setItem(
-        "carrito",
-        JSON.stringify([])
-    );
-
+    // 7. Mostramos el mensaje al usuario
     alert("Compra realizada correctamente");
 
-    console.log(
-        JSON.parse(localStorage.getItem("historialCompras"))
-    );
+    // 8. Recargamos la página para que el DOM se limpie automáticamente
+    // Esto hace que el carrito, contador y offcanvas vuelvan a su estado inicial
+    window.location.reload();
 }
