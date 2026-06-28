@@ -12,75 +12,111 @@
 </head>
 
 <body>
-    <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg sticky-top" aria-label="Navegación principal">
-            <div class="container">
+     <!--? body: Navbar: Israel -->
+<nav class="navbar navbar-expand-lg sticky-top" aria-label="Navegación principal">
+    <div class="container">
 
-                <a class="navbar-brand fw-bold" href="/">
-                    <img src="/src/assets/icons/logo-mel.png" alt="Logo Mundo Entre Libros" class="navbar-logo"
-                        loading="lazy" />
-                </a>
+        <!-- Logo -->
+        <a class="navbar-brand fw-bold" href="/">
+            <img
+                src="/src/assets/icons/logo-mel.png"
+                alt="Logo Mundo Entre Libros"
+                class="navbar-logo"
+                loading="lazy">
+        </a>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Abrir menú">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        <!-- Botón hamburguesa -->
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Abrir menú">
 
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav mx-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link active" href="/"> Inicio </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/catalog/catalog.html">
-                                Catálogo
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/forums/forums.html">
-                                Foros
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/aboutUs/aboutUs.html">
-                                Nosotros
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/contact/contact.html">
-                                Contacto
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/account/account.html">
-                                <img src="/src/assets/icons/icono-cuenta-navbar.png" alt="Mi Cuenta" class="navbar-icon"
-                                    loading="lazy" />
-                            </a>
-                        </li>
-                            
+            <span class="navbar-toggler-icon"></span>
 
-                    <!----Carrito  modal----->
+        </button>
 
-                        <li class="nav-item contenedor-carrito-offcanvas">
-                            <a class="nav-link" href="/shoppingCart/shopping.html" data-bs-toggle="offcanvas"
-                                data-bs-target="#offcanvasCarrito" aria-controls="offcanvasCarrito">
+        <!-- Contenido de la navbar -->
+        <div class="collapse navbar-collapse" id="navbarNav">
 
-                                <div class="caja-icono-carrito">
-                                    <img src="/src/assets/icons/icono-carrito-navbar.png" alt="Carrito"
-                                        class="navbar-icon">
-                                    <span id="contador-carrito">0</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="nav-item d-none" id="li-cerrar-sesion">
-                            <a class="nav-link cerrar-sesion-link" href="#" id="btn-cerrar-sesion">
-                                Cerrar sesión
-                            </a>
-                        </li>
+            <!-- Menú principal -->
+            <ul class="navbar-nav mx-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="/">
+                        Inicio
+                    </a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCatalog" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Catálogo
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownCatalog">
+                        <li><a class="dropdown-item" href="/catalog/catalog.html">Sagas</a></li>    
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/catalog/catalog.html">Ver todo el catálogo</a></li>
                     </ul>
-                </div>
-            </div>
-        </nav>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/forums/forums.html">
+                        Foros
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/aboutUs/aboutUs.html">
+                        Nosotros
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact/contact.html">
+                        Contacto
+                    </a>
+                </li>
+
+                <!-- Usuario -->
+                <li class="nav-item nav-icon-item">
+                    <a class="nav-link nav-icon-link" href="/account/account.html">
+                        <img
+                            src="/src/assets/icons/icono-cuenta-navbar.png"
+                            alt="Mi Cuenta"
+                            class="navbar-icon"
+                            loading="lazy">
+                    </a>
+                </li>
+
+                <!-- Carrito Offcanvas -->
+                <li class="nav-item contenedor-carrito-offcanvas"> 
+    <a class="nav-link" href="/shoppingCart/shopping.html" 
+       data-bs-toggle="offcanvas" 
+       data-bs-target="#offcanvasCarrito" 
+       aria-controls="offcanvasCarrito"
+       aria-label="Ver carrito de compras"> <div class="caja-icono-carrito"> 
+            <img src="/src/assets/icons/icono-carrito-navbar.png" 
+                 alt="" class="navbar-icon"> <span id="contador-carrito">0</span> 
+        </div> 
+    </a> 
+</li>
+    <li class="nav-item d-none" id="li-cerrar-sesion">
+        <a class="nav-link cerrar-sesion-link" href="#" id="btn-cerrar-sesion">
+        Cerrar sesión
+	</a>
+</li>
+            </ul>
+
+        </div>
+
+    </div>
+</nav>
+<!-- Aqui termina el navbar dentro de body: Israel-->
+
+
         <!--? Header / Carrusel: Mafer -->
         <header class="home-header" aria-label="Carrusel principal de Mundo Entre Libros">
             <div id="homeHeroCarousel" class="carousel slide home-hero-carousel" data-bs-ride="carousel"
@@ -237,7 +273,10 @@
                                     <p>J. K. Rowling</p>
                                     <div class="libro-precio">$300.00</div>
                                 </div>
-                                <button class="btn-agregar-carrito">Agregar al carrito</button>
+                                <button class="btn-carrito btn-agregar-carrito" data-id="hp-01" 
+                                data-titulo="Harry Potter" data-precio="300" 
+                                data-portada="/src/assets/libros/HP_Piedra_Filosofal.webp">
+                                Agregar al carrito</button>
                             </div>
 
                             <div class="libro-card">
@@ -248,7 +287,10 @@
                                     <p>Jane Austen</p>
                                     <div class="libro-precio">$599.00</div>
                                 </div>
-                                <button class="btn-agregar-carrito">Agregar al carrito</button>
+                                <button class="btn-carrito btn-agregar-carrito" data-id="op-01" 
+                                data-titulo="Orgullo y prejuicio" data-precio="599" 
+                                data-portada="/src/assets/libros/novelaJuvenil/Orgullo_y_prejuicio.jpg">
+                                Agregar al carrito</button>
                             </div>
 
                             <div class="libro-card">
@@ -258,7 +300,10 @@
                                     <p>Stephen King</p>
                                     <div class="libro-precio">659.00</div>
                                 </div>
-                                <button class="btn-agregar-carrito">Agregar al carrito</button>
+                                <button class="btn-carrito btn-agregar-carrito" data-id="it-01" 
+                                data-titulo="It (Eso)" data-precio="659" 
+                                data-portada="/src/assets/libros/It.webp">
+                                Agregar al carrito</button>
                             </div>
 
                             <div class="libro-card">
@@ -268,7 +313,10 @@
                                     <p>Frank Herbert</p>
                                     <div class="libro-precio">$400.00</div>
                                 </div>
-                                <button class="btn-agregar-carrito">Agregar al carrito</button>
+                                <button class="btn-carrito btn-agregar-carrito" data-id="dune-01" 
+                                data-titulo="Dune" data-precio="400" 
+                                data-portada="/src/assets/libros/Dune.jpg">
+                                Agregar al carrito</button>
                             </div>
 
                         </div>
@@ -381,6 +429,11 @@
                 </a>
             </div>
         </div>
+    </div>
+
+    <div id="toast-carrito" class="toast-notificacion">
+        <span class="toast-icono">✔️</span>
+        <span class="toast-mensaje">¡Libro agregado al carrito!</span>
     </div>
 
     <script type="module" src="/src/main.js"></script>
